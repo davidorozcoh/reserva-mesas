@@ -1,0 +1,158 @@
+<!-- reserva.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservar Mesa</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-image: url('images/restaurante.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.65);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-top: 30px;
+    }
+    .plano-restaurante {
+      display: grid;
+      grid-template-columns: repeat(4, 80px);
+      grid-gap: 25px;
+      justify-content: center;
+      margin: 30px 0;
+    }
+    .mesa {
+      width: 80px;
+      height: 80px;
+      background-image: url('images/comedor (1).png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      position: relative;
+    }
+    .mesa span {
+      position: absolute;
+      bottom: 2px;
+      right: 4px;
+      font-size: 0.8em;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      padding: 2px 4px;
+    }
+    .mesa:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+    .mesa.seleccionada {
+      filter: drop-shadow(0 0 10px #4caf50);
+    }
+    .mesa.ocupada {
+      filter: grayscale(1) brightness(0.7);
+      cursor: not-allowed;
+    }
+    select, input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    button {
+      background-color: #4da6ff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    button:hover {
+      background-color: #3399ff;
+      transform: scale(1.05);
+    }
+    #formulario {
+      margin-top: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    #mensajeConfirmacion {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .plano-restaurante {
+        grid-template-columns: repeat(2, 70px);
+        grid-gap: 15px;
+      }
+      .mesa {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Selecciona tu mesa</h1>
+    <div class="plano-restaurante" id="mesaGrid"></div>
+
+    <label for="personas"><h2>Cantidad de personas:</h2></label>
+    <select id="personas">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+
+    <label for="fecha">Fecha de reserva:</label>
+    <input type="date" id="fecha" required />
+
+    <label for="hora">Hora de reserva:</label>
+    <input type="time" id="hora" required />
+
+    <button onclick="mostrarFormulario()">Reservar</button>
+
+    <div id="formulario" style="display:none;">
+      <h3>Datos del cliente</h3>
+      <input type="text" id="nombre" placeholder="Nombre completo" required />
+      <input type="tel" id="telefono" placeholder="Teléfono" pattern="[0-9]{7,15}" required />
+      <input type="email" id="correo" placeholder="Correo electrónico" required />
+      <button onclick="finalizarReserva()">Finalizar Reserva</button>
+    </div>
+
+    <p id="mensajeConfirmacion"></p>
+  </div>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+  (function(){
+    emailjs.init("_aM9dnBbixZVOSzW0");
+  })();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

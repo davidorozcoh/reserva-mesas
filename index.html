@@ -1,0 +1,64 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurante - Inicio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-image: url('images/restaurant-interior.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .inicio-container {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 30%;
+    }
+    .inicio-container h1 {
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 2em;
+    }
+    .inicio-container button {
+      background-color: #4da6ff;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .inicio-container button:hover {
+      background-color: #3399ff;
+    }
+
+    @media (max-width: 600px) {
+      .inicio-container h1 {
+        font-size: 1.5em;
+      }
+      .inicio-container button {
+        width: 100%;
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="inicio-container">
+    <h1>Bienvenido a Nuestro Restaurante</h1>
+    <button onclick="location.href='reserva.html'">Reservar una mesa</button>
+  </div>
+</body>
+</html>
