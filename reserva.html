@@ -33,34 +33,44 @@
       margin: 30px 0;
     }
     .mesa {
-      width: 80px;
-      height: 80px;
-      background-image: url('images/comedor (1).png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s ease;
       position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border: none;
+      background-image: url('images/comedor (1).png');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      border-radius: 10px;
     }
+
     .mesa span {
       position: absolute;
-      bottom: 2px;
-      right: 4px;
-      font-size: 0.8em;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 5px;
-      padding: 2px 4px;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 13px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .mesa:hover {
       transform: scale(1.05);
       filter: brightness(1.1);
     }
+
     .mesa.seleccionada {
       filter: drop-shadow(0 0 10px #4caf50);
     }
+
     .mesa.ocupada {
       filter: grayscale(1) brightness(0.7);
       cursor: not-allowed;
@@ -146,6 +156,28 @@
 
     <p id="mensajeConfirmacion"></p>
   </div>
+  <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+<script>
+  // Tu configuración personalizada
+  const firebaseConfig = {
+    apiKey: "AIzaSyB0GIVXglrrkSDmpEN0Py3hP5IpjZggj48",
+    authDomain: "reserva-restaurante-a32bb.firebaseapp.com",
+    databaseURL: "https://reserva-restaurante-a32bb-default-rtdb.firebaseio.com",
+    projectId: "reserva-restaurante-a32bb",
+    storageBucket: "reserva-restaurante-a32bb.firebasestorage.app",
+    messagingSenderId: "1015664747122",
+    appId: "1:1015664747122:web:0b33240af9c4db482958eb",
+    measurementId: "G-24S3D6ZX1R"
+  };
+
+  // Inicializar Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
+
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
